@@ -92,6 +92,7 @@ export function Home() {
       curText = e.target.value;
       temp = -1;
     }
+    //console.log("test");
   };
  
   function nextSearchPhrase(e) {
