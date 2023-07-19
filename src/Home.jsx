@@ -1,15 +1,24 @@
 import logo from './logo.png';
 import search_img from './search.png';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-let availableKeywords = ["Adam", "Ben", "Carol", "Damian", "Stephen", "Curry", "Klay", "Thompson", "Paul", "George", "Lebron", "James", "Adam", "Ben", "Carol", "Damian", "Stephen", "Curry", "Klay", "Thompson", "Paul", "George", "Lebron", "James"];
+let availableKeywords = [];
 var temp = -1;
 var curText = "";
 
 export function Home() {
   const [inputText, setInputText] = useState("");
   const [show, setShow] = useState(false);
+
+  useEffect(()=> {
+    fetch('/home').then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+    }).then(data => availableKeywords = data["companies"])
+  }, [])
+
 
   function colorBlue(e) {
    const liArray = document.getElementsByTagName('li');
