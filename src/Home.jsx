@@ -1,23 +1,37 @@
 import logo from './logo.png';
 import search_img from './search.png';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 let availableKeywords = [];
 var temp = -1;
 var curText = "";
 
-export function Home() {
+export function Home(props) {
   const [inputText, setInputText] = useState("");
   const [show, setShow] = useState(false);
+  availableKeywords = props.companies;
 
-  useEffect(()=> {
-    fetch('/home').then(response => {
-      if (response.ok) {
-        return response.json()
-      }
-    }).then(data => availableKeywords = data["companies"])
-  }, [])
+  function rerouteToResultPage(inputValue) {
+    const endpoint = '/' + inputValue;
+    fetch(endpoint, {
+      method: 'POST', // or 'PUT' depending on your needs
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: inputValue }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the Flask backend
+        // ...
+        console.log(data);
+        window.location.href = '/' + data["message"];
+      })
+      .catch((error) => {
+        console.error('Error sending data:', error);
+      });
+  }
 
 
   function colorBlue(e) {
@@ -80,6 +94,7 @@ export function Home() {
         setInputText(inputValue);
         curText = e.target.value;
         temp = -1;
+        rerouteToResultPage(inputValue);
       }
 
     } else if (e.target.className === "myListItem") {
@@ -87,6 +102,7 @@ export function Home() {
       setInputText(e.target.innerText);
       temp = -1;
       curText = e.target.innerText;
+      rerouteToResultPage(e.target.innerText);
     }else {
       setShow(false);
       setInputText(document.getElementById('input-box').value);
@@ -162,6 +178,7 @@ export function Home() {
         setInputText(inputValue);
         curText = e.target.value;
         temp = -1;
+        rerouteToResultPage(inputValue);
       }
     }
   }
@@ -171,11 +188,11 @@ export function Home() {
       <section>
         <img src={logo} className="logo" id="logo" alt="logo"/>
         <form className ='search-engine' id = "search-engine" action="/" method="GET">
-        <div className = "actual-searchbar">
-          <img className = "search-img" id="search-img" src={search_img} alt="search"/>
-          <input className= "searchbar" id="input-box" onChange={handleChange} onKeyDown = {nextSearchPhrase} value={inputText} type="text" placeholder="Enter Company or Ticker" autoComplete="off"/>
-        </div>
-        { show ? <SearchResults/> : null }
+          <div className = "actual-searchbar">
+            <img className = "search-img" id="search-img" src={search_img} alt="search"/>
+            <input className= "searchbar" id="input-box" onChange={handleChange} onKeyDown = {nextSearchPhrase} value={inputText} type="text" placeholder="Enter Company or Ticker" autoComplete="off"/>
+          </div>
+          { show ? <SearchResults/> : null }
       </form>
       </section>
     </div>

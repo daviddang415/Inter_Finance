@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 import pickle
 
 app = Flask(__name__)
@@ -11,14 +11,9 @@ def home():
     }
     return jsonify(data)
 
-'''
-@app.route("/<company>", methods=['GET'])
-def get_company(company):
-    data = {
-        "companies": pickle.load(open("sp500tickers.pickle", "rb"))
-    }
-    return jsonify(data)
-'''
+@app.route('/<company>', methods=['POST'])
+def handle_data(company):
+    return {'message': company}
 
 if __name__ == "__main__":
     app.run(debug=True)
