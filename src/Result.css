@@ -17,22 +17,29 @@
 }
 
 .top {
+    width: 100%;
+    border: 1px black solid;
+    padding: 15px;
     display: flex;
-    border: 1px #555 solid;
-    align-items: flex-start;
-    justify-content: space-evenly;
+    background-color: gray;
+    justify-content: space-between;
+    height: 76.6px;
+}
+
+.company {
+    margin: auto;
+    font-size: 30px;
 }
 
 .logo2 {
-  flex: 1;  
-  align-self: flex-start; 
-  display: block;
-  margin: auto;
-  width: 200px;
+  width: 100px;
+  align-self: flex-start;
+  margin: 3.2375px 0px;
 }
 
 .logo2:hover {
     cursor: pointer;
+    background-color: #999;
 }
 
 input[type="text"]
@@ -41,7 +48,6 @@ input[type="text"]
 }
 
 .search-engine2 {
-  flex: 2;
   width: 580px;
   border-radius: 15px;
   background-color: #fff;

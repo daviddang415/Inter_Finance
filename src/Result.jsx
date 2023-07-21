@@ -189,6 +189,7 @@ export function Result(props) {
       <div className="results" onClick = {openResults}>
         <div className="top">
             <img src={logo} className="logo2" id="logo2" alt="logo"/>
+            {/*<h1 className='company'> { props.company } </h1>*/}
             <div className='test'>
                 <form className ='search-engine2' id = "search-engine2" action="/" method="GET">
                     <div className = "actual-searchbar2">
