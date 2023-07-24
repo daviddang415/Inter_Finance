@@ -2,6 +2,7 @@ import logo from './logo.png';
 import search_img from './search.png';
 import './Result.css';
 import { useState } from 'react';
+import { Stock } from './Stock';
 
 let availableKeywords = [];
 var temp = -1;
@@ -10,29 +11,48 @@ var curText = "";
 export function Result(props) {
     const [inputText, setInputText] = useState("");
     const [show, setShow] = useState(false);
-    availableKeywords = props.companies;
+    availableKeywords = getAvailableKeywords(props.companies);
+
+    function getAvailableKeywords(company_dict) {
+      var temp = [];
+      for (var key in company_dict) {
+        temp.push(key + " (" + company_dict[key] +  ")")
+      }
   
-    function rerouteToResultPage(inputValue) {
-      const endpoint = '/' + inputValue;
-      fetch(endpoint, {
-        method: 'POST', // or 'PUT' depending on your needs
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ data: inputValue }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Handle the response from the Flask backend
-          // ...
-          console.log(data);
-          window.location.href = '/' + data["message"];
-        })
-        .catch((error) => {
-          console.error('Error sending data:', error);
-        });
+      return temp;
     }
+
+    function getCompany(val, company_dict) {
+        for (var key in company_dict) {
+          if (val.toLowerCase().includes(key.toLowerCase())) {
+            return key;
+          }
+        }
+        return "";
+      }
   
+      function rerouteToResultPage(inputValue) {
+        const comp = getCompany(inputValue, props.companies);
+        const endpoint = '/' + comp;
+        fetch(endpoint, {
+          method: 'POST', // or 'PUT' depending on your needs
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ data: inputValue }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the response from the Flask backend
+            // ...
+            console.log(data);
+            
+            window.location.href = '/' + data["company"];
+          })
+          .catch((error) => {
+            console.error('Error sending data:', error);
+          });
+      }
   
     function colorBlue(e) {
      const liArray = document.getElementsByTagName('li');
@@ -201,6 +221,7 @@ export function Result(props) {
             </div>
         </div>
         <div className="middle">
+            <Stock company={props.company}/>
         </div>
       </div>
     );

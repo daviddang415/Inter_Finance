@@ -7,14 +7,13 @@ def save_sp500_tickers():
     soup = bs.BeautifulSoup(resp.text, "lxml")
     table = soup.find('table', {'class':'wikitable sortable'})
     
-    companies_and_tickers = []
+    companies_dict = {}
     for row in table.findAll('tr')[1:]:
         company = row.findAll('td')[1].text
         ticker = row.findAll('td')[0].text[:-1]
-        company_and_ticker = company + " " + "(" + ticker + ")"
-        companies_and_tickers.append(company_and_ticker)
+        companies_dict[company] = ticker
     
     with open("sp500tickers.pickle","wb") as f:
-        pickle.dump(companies_and_tickers, f)
+        pickle.dump(companies_dict, f)
 
-    return companies_and_tickers
+    return companies_dict

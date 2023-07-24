@@ -4,7 +4,7 @@ import { Result } from './Result';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState({});
 
   useEffect(()=> {
     fetch('/home').then(response => {
@@ -18,9 +18,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home companies = {companies}/>}/>
-        {companies.map((company) => (
+        {Object.keys(companies).map((company) => (
         <Route path={`/${company}`} key={company} element={<Result company={company} companies = {companies}/>}/>
         ))}
+        <Route path="*" element={<h1>Error</h1>} />
       </Routes>
     </BrowserRouter>
   );

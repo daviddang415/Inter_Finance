@@ -10,10 +10,29 @@ var curText = "";
 export function Home(props) {
   const [inputText, setInputText] = useState("");
   const [show, setShow] = useState(false);
-  availableKeywords = props.companies;
+  availableKeywords = getAvailableKeywords(props.companies);
+
+  function getAvailableKeywords(company_dict) {
+    var temp = [];
+    for (var key in company_dict) {
+      temp.push(key + " (" + company_dict[key] +  ")")
+    }
+
+    return temp;
+  }
+
+  function getCompany(val, company_dict) {
+    for (var key in company_dict) {
+      if (val.toLowerCase().includes(key.toLowerCase())) {
+        return key;
+      }
+    }
+    return "";
+  }
 
   function rerouteToResultPage(inputValue) {
-    const endpoint = '/' + inputValue;
+    const comp = getCompany(inputValue, props.companies);
+    const endpoint = '/' + comp;
     fetch(endpoint, {
       method: 'POST', // or 'PUT' depending on your needs
       headers: {
@@ -25,14 +44,14 @@ export function Home(props) {
       .then((data) => {
         // Handle the response from the Flask backend
         // ...
-        console.log(data);
-        window.location.href = '/' + data["message"];
+        console.log('/' + data["company"]);
+        
+        window.location.href = '/' + data["company"];
       })
       .catch((error) => {
         console.error('Error sending data:', error);
       });
   }
-
 
   function colorBlue(e) {
    const liArray = document.getElementsByTagName('li');
