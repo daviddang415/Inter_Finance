@@ -15,7 +15,7 @@ def home():
 @app.route('/<company>', methods=['POST', 'GET'])
 def handle_data(company):
     company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
-    finance_info = getFinanceData.getFinancialInfo(company_dict[company])
+    finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open')
     return {'company': company, 'finance_info': finance_info}
 
 if __name__ == "__main__":

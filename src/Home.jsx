@@ -45,7 +45,6 @@ export function Home(props) {
         // Handle the response from the Flask backend
         // ...
         console.log('/' + data["company"]);
-        
         window.location.href = '/' + data["company"];
       })
       .catch((error) => {

@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   const [companies, setCompanies] = useState({});
+  const [render, setRender] = useState(false);
+  setTimeout(() => setRender(true), 75);
 
   useEffect(()=> {
     fetch('/home').then(response => {
@@ -14,7 +16,7 @@ export default function App() {
     }).then(data => setCompanies(data["companies"]))
   }, [])
 
-  return (
+  return ( render ?
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home companies = {companies}/>}/>
@@ -24,5 +26,6 @@ export default function App() {
         <Route path="*" element={<h1>Error</h1>} />
       </Routes>
     </BrowserRouter>
-  );
+  :
+  null);
 }
