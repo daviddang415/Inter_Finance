@@ -8,12 +8,14 @@
 }
 
 .results {
-  height: 100vh;
-  overflow: hidden;
+  /*height: 100vh;*/
   font-family: "Montserrat", sans-serif;
   background-image: url('background_image.png');
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 300vh;
 }
 
 .top {
@@ -106,10 +108,14 @@ input[type="text"]
 
 .result-box2 ul {
   /* border-top: 1px solid #999; */
+  position: relative;
   padding: 15px 10px;
+  z-index: 1;
 }
 
 .result-box2 ul li {
+  position: relative;
+  z-index: 1;
   list-style-type: none;
   border-radius: 5px;
   padding: 15px 10px;
@@ -125,10 +131,14 @@ input[type="text"]
 .result-box2 {
   max-height: 300px;
   overflow-y: scroll;
+  position: relative;
+  background-color: white;
+  z-index: 1;
 }
 
 .line2 {
   border: 1px solid #999;
   width: 563.2px;
-  position: absolute;
+  position: relative;
+  z-index: 1;
 }

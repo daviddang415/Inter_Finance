@@ -208,7 +208,7 @@ input[type="text"]
 .line {
   border: 1px solid #999;
   width: 563.2px;
-  position: absolute;
+  position: relative;
 }
 
 /*

@@ -2,7 +2,7 @@ import logo from './logo.png';
 import search_img from './search.png';
 import './Result.css';
 import { useState } from 'react';
-import { Stock } from './Stock';
+import { Tabs } from './Tabs';
 
 let availableKeywords = [];
 var temp = -1;
@@ -221,7 +221,7 @@ export function Result(props) {
             </div>
         </div>
         <div className="middle">
-            <Stock company={props.company}/>
+            <Tabs company={props.company}></Tabs>
         </div>
       </div>
     );
