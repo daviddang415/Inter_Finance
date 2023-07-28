@@ -15,8 +15,16 @@ def home():
 @app.route('/<company>', methods=['POST', 'GET'])
 def handle_data(company):
     company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
-    finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open')
+    finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open', '100d', '1d')
     return {'company': company, 'finance_info': finance_info}
+
+
+@app.route('/finance_data/<company>/<period>/<interval>', methods=['GET'])
+def get_finance_data(company, period, interval):
+    company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
+    finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open', period, interval)
+    return {'finance_info': finance_info}
+
 
 if __name__ == "__main__":
     app.run(debug=True)

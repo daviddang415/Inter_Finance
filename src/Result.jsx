@@ -9,7 +9,7 @@ var temp = -1;
 var curText = "";
 
 export function Result(props) {
-    const [inputText, setInputText] = useState("");
+    const [inputText, setInputText] = useState(props.company + " (" + props.companies[props.company] +  ")");
     const [show, setShow] = useState(false);
     availableKeywords = getAvailableKeywords(props.companies);
 

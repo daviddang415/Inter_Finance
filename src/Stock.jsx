@@ -6,7 +6,10 @@ export function Stock(props) {
     const [stockChartYValues, setstockChartYValues] = useState([]);
 
     useEffect(()=> {
-        let API_Call = `/${props.company}`;
+        let API_Call = `/finance_data/${props.company}/${props.period}/${props.interval}`;
+        console.log(props.company);
+        console.log(props.period);
+        console.log(props.interval);
 
         fetch(API_Call)
             .then(
@@ -30,7 +33,7 @@ export function Stock(props) {
                     //console.log(stockChartYValues);
                 }
             )
-      }, [props.company])
+      }, [props.company, props.period, props.interval])
 
     function fetchStock() {
         let API_Call = `/${props.company}`;
@@ -71,8 +74,7 @@ export function Stock(props) {
               marker: {color: 'green'},
                 },
               ]}
-              layout={{width: 720, height: 440, title: 'Opening Stock Prices The Past 100 Days'}}
-            />
+              layout={{width: 750, height: 450, title: `Opening Stock Prices In The Period of ${props.period} At The Interval Of ${props.interval}`}}/>
           );
     }
 

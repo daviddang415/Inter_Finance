@@ -10,38 +10,32 @@ export function Tabs(props) {
         {
             id: 1,
             tabTitle:'1D',
-            title:'Title 1',
-            content: <Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"1d"} interval={"2m"}/>
         },
         {
             id: 2,
             tabTitle:'5D',
-            title:'Title 2',
-            content: <Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"5d"} interval={"5m"}/>
         },
         {
             id: 3,
             tabTitle:'1M',
-            title:'Title 3',
-            content:<Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"1mo"} interval={"1d"}/>
         },
         {
             id: 4,
             tabTitle:'6M',
-            title:'Title 4',
-            content: <Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"6mo"} interval={"1d"}/>
         },
         {
             id: 5,
             tabTitle:'1Y',
-            title:'Title 5',
-            content: <Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"1y"} interval={"1d"}/>
         },
         {
             id: 6,
             tabTitle:'5Y',
-            title:'Title 6',
-            content:<Stock company = {props.company}/>
+            content: <Stock company = {props.company} period={"5y"} interval={"1d"}/>
         }
     ];
 
