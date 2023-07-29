@@ -1,0 +1,31 @@
+.summaryTable{
+    display: flex;
+    border: 1px solid black;
+    background-color: palevioletred;
+    width: 750px;
+    height: 400px;
+    margin: 0px 15px;
+    padding: 5px;
+}
+
+
+.tableOne {
+    margin-right: 20px;
+    border-collapse: collapse; 
+}
+
+.tableTwo {
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid black;
+}
+
+td {
+    width: 180px;
+}
+
+.value {
+    text-align: right;
+}

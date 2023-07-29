@@ -142,3 +142,9 @@ input[type="text"]
   position: relative;
   z-index: 1;
 }
+
+.middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

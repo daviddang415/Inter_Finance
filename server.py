@@ -25,6 +25,12 @@ def get_finance_data(company, period, interval):
     finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open', period, interval)
     return {'finance_info': finance_info}
 
+@app.route('/finance_summary/<company>', methods=['GET'])
+def get_finance_summary_data(company):
+    company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
+    finance_summary = getFinanceData.getFinancialSummary(company_dict[company])
+    return {'finance_summary': finance_summary}
+
 
 if __name__ == "__main__":
     app.run(debug=True)
