@@ -88,8 +88,14 @@ export function Result(props) {
       } else {
         result = availableKeywords;
       }
+
+      const search_engine2 = document.getElementById("search-engine2");
   
       if (result.length) {
+      search_engine2.style.borderRadius = "0px";
+      search_engine2.style.borderTopLeftRadius = "15px";
+      search_engine2.style.borderTopRightRadius = "15px";    
+
       return (<>
                 <div className="line2" id="line2"></div>
                 <div className = "result-box2" id="result-box2">
@@ -97,6 +103,7 @@ export function Result(props) {
                 </div>
               </>);
       } else {
+        search_engine2.style.borderRadius = "15px";
         return (null);
       }
     }
@@ -111,6 +118,9 @@ export function Result(props) {
         });
   
         if (checkText.length) {
+          const search_engine2 = document.getElementById("search-engine2");
+          search_engine2.style.borderRadius = "15px";
+
           setShow(false);
           setInputText(inputValue);
           curText = e.target.value;
@@ -119,6 +129,9 @@ export function Result(props) {
         }
   
       } else if (e.target.className === "myListItem2") {
+        const search_engine2 = document.getElementById("search-engine2");
+        search_engine2.style.borderRadius = "15px";
+
         setShow(false);
         setInputText(e.target.innerText);
         temp = -1;
@@ -127,6 +140,8 @@ export function Result(props) {
       } else if (e.target.className === "logo2") {
         window.location.href = '/';
       } else {
+        const search_engine2 = document.getElementById("search-engine2");
+        search_engine2.style.borderRadius = "15px";
         setShow(false);
         setInputText(document.getElementById('input-box2').value);
         temp = -1;
@@ -197,6 +212,8 @@ export function Result(props) {
         });
   
         if (checkText.length) {
+          const search_engine2 = document.getElementById("search-engine2");
+          search_engine2.style.borderRadius = "15px";
           setShow(false);
           setInputText(inputValue);
           curText = e.target.value;

@@ -132,8 +132,10 @@ input[type="text"]
 .result-box2 {
   max-height: 300px;
   overflow-y: scroll;
-  position: relative;
+  /*position: relative;*/
+  position: fixed;
   background-color: white;
+  width: 580px;
   z-index: 1;
 }
 
