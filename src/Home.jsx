@@ -147,18 +147,20 @@ export function Home(props) {
           temp = 0;
           liArray[temp].style.backgroundColor = "lightblue";
           e.target.value = liArray[temp].innerText;
-          liArray[temp].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'start'});
+          liArray[temp].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest'});
         } else if (temp < liArray.length - 1) {
           liArray[temp].style.backgroundColor = "white";
           temp = temp + 1;
           liArray[temp].style.backgroundColor = "lightblue";
           e.target.value = liArray[temp].innerText;
-          liArray[temp].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'start'});
+          liArray[temp].scrollTop = liArray[temp].offsetTop - 30
+          liArray[temp].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest'});
         } else {
           liArray[temp].style.backgroundColor = "white";
           document.getElementById("input-box").value = curText;
           temp = -1;
-          liArray[0].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'start'});
+          liArray[0].scrollIntoViewIfNeeded(false);
+          liArray[0].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest'});
         }
       }
     } else if (e.key === "ArrowUp") {

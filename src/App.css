@@ -60,6 +60,10 @@
 section {
   height: 100%;
   margin: 185px auto 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .logo {
@@ -203,6 +207,7 @@ input[type="text"]
 .result-box {
   max-height: 300px;
   overflow-y: scroll;
+overscroll-behavior: contain;
 }
 
 .line {
