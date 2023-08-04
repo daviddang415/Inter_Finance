@@ -13,7 +13,10 @@ h1 {
 }
 
 .container {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
     background-color: black;
     font-family: "Montserrat", sans-serif;
 }
@@ -52,6 +55,7 @@ h1 {
 
 .content {
     /*padding: 50px 80px;*/
+    height: 288.33px;
     background-color: white;
     font-weight: 300;
     line-height: 30px;

@@ -97,7 +97,7 @@ def getFinancialSummary(ticker):
     finance_info["Earnings Date"] = getEarningsDate(ticker)
 
     if "dividendRate" in company_info and "dividendYield" in company_info:
-        finance_info["Forward Dividend & Yield"] = str(company_info["dividendRate"]) + " (" + str(company_info["dividendYield"] * 100) + "%)"
+        finance_info["Forward Dividend & Yield"] = str(company_info["dividendRate"]) + " (" + str(round(company_info["dividendYield"] * 100,2)) + "%)"
     else:
         finance_info["Forward Dividend & Yield"] = "N/A"
 
@@ -127,4 +127,87 @@ def getEarningsDate(ticker):
             return str(key.date())
     return "N/A"
 
+
+#longName
+#address
+#phone
+#website
+#industry
+#sector
+#fullTimeEmployees
+def getProfileData(ticker):
+    company = yf.Ticker(ticker)
+    company_info = company.info
+    finance_info = {}
+
+    if "longName" in company_info:
+        finance_info["Name"] = str(company_info["longName"])
+    else:
+        finance_info["Name"] = "N/A"
+    
+    if "address1" in company_info: 
+        finance_info["Address"] = str(company_info["address1"])
+    else:
+        finance_info["Address"] = "N/A"
+
+    if "city" in company_info:
+        finance_info["City"] = str(company_info["city"])
+    else:
+        finance_info["City"] = "N/A"
+
+    if "state" in company_info:
+        finance_info["State"] = str(company_info["state"])
+    else:
+        finance_info["State"] = "N/A"
+
+    if "zip" in company_info:
+        finance_info["Zip"] = str(company_info["zip"])
+    else:
+        finance_info["Zip"] = "N/A"
+
+    if "country" in company_info:
+        finance_info["Country"] = str(company_info["country"])
+    else:
+        finance_info["Country"] = "N/A"
+
+    if "phone" in company_info:
+        finance_info["Phone Number"] = str(company_info["phone"])
+    else:
+        finance_info["Phone Number"] = "N/A"
+    
+    if "website" in company_info:
+        finance_info["Website"] = str(company_info["website"])
+    else:
+        finance_info["Website"] = "N/A"
+
+    if "industry" in company_info:
+        finance_info["Industry"] = str(company_info["industry"])
+    else:
+        finance_info["Industry"] = "N/A"
+
+    if "sector" in company_info:
+        finance_info["Sector"] = str(company_info["sector"])
+    else:
+        finance_info["Sector"] = "N/A"
+
+    if "fullTimeEmployees" in company_info:
+        finance_info["Full Time Employees"] = str(company_info["fullTimeEmployees"])
+    else:
+        finance_info["Full Time Employees"] = "N/A"
+
+    return finance_info
+
+
 #print(getFinancialSummary('V'))
+
+company = yf.Ticker('MMM')
+omg = company.info
+print(omg['fullTimeEmployees'])
+
+#longName
+#address
+#phone
+#website
+#industry
+#sector
+#fullTimeEmployees

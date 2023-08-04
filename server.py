@@ -18,7 +18,6 @@ def handle_data(company):
     finance_info = getFinanceData.getFinancialInfo(company_dict[company], 'Open', '100d', '1d')
     return {'company': company, 'finance_info': finance_info}
 
-
 @app.route('/finance_data/<company>/<period>/<interval>', methods=['GET'])
 def get_finance_data(company, period, interval):
     company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
@@ -31,6 +30,11 @@ def get_finance_summary_data(company):
     finance_summary = getFinanceData.getFinancialSummary(company_dict[company])
     return {'finance_summary': finance_summary}
 
+@app.route('/profile_data/<company>', methods=['GET'])
+def get_profile_data(company):
+    company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
+    finance_summary = getFinanceData.getProfileData(company_dict[company])
+    return {'profile_data': finance_summary}
 
 if __name__ == "__main__":
     app.run(debug=True)

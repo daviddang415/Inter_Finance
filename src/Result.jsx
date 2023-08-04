@@ -239,7 +239,7 @@ export function Result(props) {
             </div>
         </div>
         <div className="middle">
-           {/*<Summary company={props.company}></Summary>*/}
+           <Summary company={props.company}></Summary>
            <Tabs company={props.company}></Tabs>
         </div>
       </div>

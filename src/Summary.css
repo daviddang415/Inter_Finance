@@ -1,18 +1,98 @@
-.summaryTable{
-    display: flex;
-    border: 1px solid black;
-    /*background-color: palevioletred;*/
-    background-color: white;
-    width: 750px;
-    height: 400px;
-    /*margin: 0px 15px;*/
-    padding: 5px 10px 10px 20px;
+h1 {
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    margin: 60px 0;
 }
 
+.container2 {
+    /*margin: 0 auto;*/
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    background-color: black;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabs2 button {
+    background-color: lightgray;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    padding: 25px;
+    width: 100%;
+    height: 67.5px;
+    background-color: rgba(255,255,255,0.1);
+    transition: all 0.5s ease-out;
+}
+
+.tabs2 button:hover {
+    color:white;
+    background-color: rgba(255,255,255,0.15);
+}
+
+/*
+.graph {
+    border: 1px solid black;
+}
+*/
+
+.tabs2 button:disabled{
+    background-color: lightblue;
+    color: white;
+}
+
+.content2 {
+    /*padding: 50px 80px;*/
+    /*width: 100%;*/
+    height: 100%;
+    /*height: 288.33px;*/
+    background-color: white;
+    font-weight: 300;
+    line-height: 30px;
+    font-size: 16px;
+    overflow-y: auto;
+    /*text-align: justify;*/
+}
+
+.summaryTable{
+    display: flex;
+    /*border: 1px solid black;*/
+    /*background-color: palevioletred;*/
+    background-color: white;
+    /*margin: 0px 15px;*/
+    padding: 15px 10px 0px 20px;
+}
+
+.profileTable{
+    /*border: 1px solid black;*/
+    /*background-color: palevioletred;*/
+    background-color: white;
+    /*margin: 0px 15px;*/
+    padding: 3px 10px 5px 10px;
+}
+
+.content2,button {
+    font-size: 15px;
+}
 
 .tableOne {
     margin-right: 20px;
     border-collapse: collapse; 
+    table-layout: fixed;
+    height: 100%;
+}
+
+.actualTable {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .tableTwo {

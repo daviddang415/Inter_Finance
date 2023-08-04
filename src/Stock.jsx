@@ -7,9 +7,9 @@ export function Stock(props) {
 
     useEffect(()=> {
         let API_Call = `/finance_data/${props.company}/${props.period}/${props.interval}`;
-        console.log(props.company);
-        console.log(props.period);
-        console.log(props.interval);
+        //console.log(props.company);
+        //console.log(props.period);
+        //console.log(props.interval);
 
         fetch(API_Call)
             .then(
@@ -42,12 +42,13 @@ export function Stock(props) {
                 {
                   x: stockChartXValues,
                   y: stockChartYValues,
-                   type: 'scatter',
-              mode: 'lines+markers',
-              marker: {color: 'green'},
+                  type: 'scatter',
+                  mode: 'lines+markers',
+                  marker: {color: 'green'},
                 },
               ]}
-              layout={{width: 750, height: 450, title: `Opening Stock Prices In The Period of ${props.period} At The Interval Of ${props.interval}`}}/>
+              layout={{width: 870, height: 275, title: `Opening Stock Prices In The Period of ${props.period} At The Interval Of ${props.interval}`, yaxis:{title:'Dollars'}}}
+              config={{responsive: true}}/>
           );
     }
 
