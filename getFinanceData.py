@@ -197,12 +197,16 @@ def getProfileData(ticker):
 
     return finance_info
 
+'''
+def getCompanyNews(ticker):
+    return
 
 #print(getFinancialSummary('V'))
-
-company = yf.Ticker('MMM')
+'''
+company = yf.Ticker('AAPL')
 omg = company.info
-print(omg['fullTimeEmployees'])
+print(company.news)
+
 
 #longName
 #address

@@ -3,7 +3,9 @@ import search_img from './search.png';
 import './Result.css';
 import { useState } from 'react';
 import { Tabs } from './Tabs';
-import { Summary } from './Summary'
+import { Summary } from './Summary';
+import { News } from './News';
+import { Reviews } from './Reviews';
 
 let availableKeywords = [];
 var temp = -1;
@@ -241,6 +243,10 @@ export function Result(props) {
         <div className="middle">
            <Summary company={props.company}></Summary>
            <Tabs company={props.company}></Tabs>
+        </div>
+        <div className='bottom'>
+          <News company={props.company}></News>
+          <Reviews company={props.company}></Reviews>
         </div>
       </div>
     );

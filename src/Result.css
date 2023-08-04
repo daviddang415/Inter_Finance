@@ -9,6 +9,8 @@
 
 .results {
   /*height: 100vh;*/
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
   background-image: url('background_image.png');
@@ -147,6 +149,14 @@ input[type="text"]
 }
 
 .middle{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  /*justify-content: space-evenly;*/
+}
+
+.bottom{
   display: flex;
   flex-direction: row;
   width: 100%;
