@@ -214,25 +214,26 @@ def getNews(ticker):
         temp["Title"] = news['title']
         temp["Publisher"] = news['publisher']
         temp['Link'] = news['link']
-        #temp['Publisher Date'] = str(temp['providerPublishTime'])
-        temp['Thumbnail'] = news['thumbnail']['resolutions'][1]['url']
-
+        temp['Publisher Date'] = str(datetime.datetime.fromtimestamp(news['providerPublishTime']))[:-3]
+        if 'thumbnail' in news:
+            temp['Thumbnail'] = news['thumbnail']['resolutions'][1]['url']
+        else:
+            temp['Thumbnail'] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png'
         news_list.append(temp)
     
     finance_info["News"] = news_list
 
     return finance_info
 
-'''
-def getCompanyNews(ticker):
-    return
 
-#print(getFinancialSummary('V'))
 '''
+company = yf.Ticker('AAPL')
+omg = company.news
 
-company = yf.Ticker('MMM')
-omg = company.info
-print(company.news)
+print(omg)
+
+getNews('AAPL')
+'''
 
 
 #longName

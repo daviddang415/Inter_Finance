@@ -10,8 +10,9 @@ export function News(props) {
                     <li className = "article" key = {i}>
                         <img src={props.news['News'][i]['Thumbnail']} alt="article image" className='image'></img>
                         <div className='words'>
-                            <a href={props.news['News'][i]['Link']} className='title'>{props.news['News'][i]['Title']}</a>
+                            <a href={props.news['News'][i]['Link']} target="_blank" className='title'>{props.news['News'][i]['Title']}</a>
                             <p className='publisher'>{props.news['News'][i]['Publisher']}</p>
+                            <p className='date'>{props.news['News'][i]['Publisher Date']}</p>
                         </div>
                     </li>
                 ))}
