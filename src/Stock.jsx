@@ -47,7 +47,7 @@ export function Stock(props) {
                   marker: {color: 'green'},
                 },
               ]}
-              layout={{width: 800, height: 260, title: `Opening Stock Prices In The Period of ${props.period} At The Interval Of ${props.interval}`}}
+              layout={{width: 780, height: 260, title: `Opening Stock Prices In The Period of ${props.period} At The Interval Of ${props.interval}`}}
               config={{responsive: true}}/>
           );
     }

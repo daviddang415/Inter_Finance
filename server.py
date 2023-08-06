@@ -36,5 +36,11 @@ def get_profile_data(company):
     finance_summary = getFinanceData.getProfileData(company_dict[company])
     return {'profile_data': finance_summary}
 
+@app.route('/news/<company>', methods=['GET'])
+def get_news(company):
+    company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
+    news = getFinanceData.getNews(company_dict[company])
+    return {'news': news}
+
 if __name__ == "__main__":
     app.run(debug=True)

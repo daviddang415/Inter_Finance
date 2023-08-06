@@ -1,11 +1,8 @@
 import logo from './logo.png';
 import search_img from './search.png';
 import './Result.css';
-import { useState } from 'react';
-import { Tabs } from './Tabs';
-import { Summary } from './Summary';
-import { News } from './News';
-import { Reviews } from './Reviews';
+import { useState, useEffect } from 'react';
+import { Actualtabs } from './Actualtabs'
 
 let availableKeywords = [];
 var temp = -1;
@@ -14,7 +11,57 @@ var curText = "";
 export function Result(props) {
     const [inputText, setInputText] = useState(props.company + " (" + props.companies[props.company] +  ")");
     const [show, setShow] = useState(false);
+    const [finance_info_summary_dict, setFinance_info_summary_dict] = useState({});
+    const [profile_data, setProfile_data] = useState({});
+    const [news, setNews] = useState({});
+
+
     availableKeywords = getAvailableKeywords(props.companies);
+
+    useEffect(()=> {
+      let API_Call = `/finance_summary/${props.company}`;
+      let API_Call_2 = `/profile_data/${props.company}`;
+      let API_Call_3 = `/news/${props.company}`;
+
+      fetch(API_Call)
+          .then(
+              function(response) {
+                  return response.json();
+              }
+          )
+          .then(
+              function(data) {
+                  //console.log(data["finance_summary"]);
+                  setFinance_info_summary_dict(data["finance_summary"]);
+              }
+          )
+
+      fetch(API_Call_2)
+          .then(
+              function(response) {
+                  return response.json();
+              }
+          )
+          .then(
+              function(data) {
+                  console.log(data["profile_data"]);
+                  setProfile_data(data["profile_data"]);
+              }
+          )
+        
+        fetch(API_Call_3)
+          .then(
+              function(response) {
+                  return response.json();
+              }
+          )
+          .then(
+              function(data) {
+                  console.log(data["news"]);
+                  setNews(data["news"]);
+              }
+          )
+    }, [props.company])
 
     function getAvailableKeywords(company_dict) {
       var temp = [];
@@ -241,12 +288,7 @@ export function Result(props) {
             </div>
         </div>
         <div className="middle">
-           <Summary company={props.company}></Summary>
-           <Tabs company={props.company}></Tabs>
-        </div>
-        <div className='bottom'>
-          <News company={props.company}></News>
-          <Reviews company={props.company}></Reviews>
+          <Actualtabs company = {props.company} finance_info_summary_dict={finance_info_summary_dict} profile_data={profile_data} news={news}></Actualtabs>
         </div>
       </div>
     );

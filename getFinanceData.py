@@ -195,6 +195,32 @@ def getProfileData(ticker):
     else:
         finance_info["Full Time Employees"] = "N/A"
 
+    if "longBusinessSummary" in company_info:
+        finance_info["Long Business Summary"] = str(company_info["longBusinessSummary"])
+    else:
+        finance_info["Long Business Summary"] = "N/A"
+
+    return finance_info
+
+def getNews(ticker):
+    company = yf.Ticker(ticker)
+    company_news = company.news
+    news_list = []
+    finance_info = {}
+
+    for news in company_news:
+        temp = {}
+        
+        temp["Title"] = news['title']
+        temp["Publisher"] = news['publisher']
+        temp['Link'] = news['link']
+        #temp['Publisher Date'] = str(temp['providerPublishTime'])
+        temp['Thumbnail'] = news['thumbnail']['resolutions'][1]['url']
+
+        news_list.append(temp)
+    
+    finance_info["News"] = news_list
+
     return finance_info
 
 '''
@@ -203,7 +229,8 @@ def getCompanyNews(ticker):
 
 #print(getFinancialSummary('V'))
 '''
-company = yf.Ticker('AAPL')
+
+company = yf.Ticker('MMM')
 omg = company.info
 print(company.news)
 

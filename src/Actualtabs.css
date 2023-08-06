@@ -12,24 +12,22 @@ h1 {
     margin: 60px 0;
 }
 
-.container {
+.actual_tabs_container {
     /*margin: 0 auto;*/
-    width: 785px;
-    height: 359.17px;
+    width: 100%;
+    height: 100%;
     /*border: 1px solid black;*/
     background-color: black;
     font-family: "Montserrat", sans-serif;
-    margin: auto;
-    margin-left: 5px;
 }
 
-.tabs {
+.actual_tabs_tabs {
     display: flex;
     justify-content: space-between;
     background-color: black;
 }
 
-.tabs button {
+.actual_tabs_tabs button {
     background-color: lightgray;
     border: none;
     color: #888888;
@@ -40,7 +38,7 @@ h1 {
     transition: all 0.5s ease-out;
 }
 
-.tabs button:hover {
+.actual_tabs_tabs button:hover {
     color:white;
     background-color: rgba(255,255,255,0.15);
 }
@@ -51,25 +49,23 @@ h1 {
 }
 */
 
-.tabs button:disabled{
+.actual_tabs_tabs button:disabled{
     background-color: lightblue;
     color: white;
 }
 
-.content {
+.actual_tabs_content {
     /*padding: 50px 80px;*/
-    height: 291.67px;
+    width: 100%;
+    height: 567.58px;
     overflow-y: auto;
     background-color: white;
     font-weight: 300;
     line-height: 30px;
     font-size: 16px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;  
 }
 
-.content,button {
+.actual_tabs_content,button {
     font-size: 15px;
 }
 /*

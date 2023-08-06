@@ -21,7 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home companies = {companies}/>}/>
         {Object.keys(companies).map((company) => (
-        <Route path={`/${company}`} key={company} element={<Result company={company} companies = {companies}/>}/>
+        <Route path={`/${company}`} key={company} element={<Result company = {company} companies = {companies}/>}/>
         ))}
         <Route path="*" element={<h1>Error</h1>} />
       </Routes>

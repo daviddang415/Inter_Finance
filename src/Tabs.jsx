@@ -43,6 +43,7 @@ export function Tabs(props) {
         setCurrentTab(e.target.id);  
     }
 
+
     return (
         <div className="container">
             <div className='tabs'>
