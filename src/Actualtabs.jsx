@@ -26,7 +26,7 @@ export function Actualtabs(props) {
         },
         {
             id: 4,
-            tabTitle:'Reviews',
+            tabTitle:'Ratings',
             content: <p></p>
         }
     ];
