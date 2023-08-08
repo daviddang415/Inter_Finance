@@ -2,6 +2,8 @@ import yfinance as yf
 import math
 import datetime
 import pandas as pd
+from urllib.request import urlopen
+import json
 
 def getFinancialInfo(ticker, price_point, period, interval):
     data = yf.download(tickers=ticker, period=period, interval=interval)
@@ -225,6 +227,10 @@ def getNews(ticker):
 
     return finance_info
 
+def getRatings(ticker):
+    response = urlopen("https://financialmodelingprep.com/api/v3/rating/" + ticker + "?apikey=59872f600b259404d104fbb5ed4f2096")
+    data = response.read().decode("utf-8")
+    return json.loads(data)[0]
 
 '''
 company = yf.Ticker('AAPL')

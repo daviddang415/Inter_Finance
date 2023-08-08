@@ -14,6 +14,7 @@ export function Result(props) {
     const [finance_info_summary_dict, setFinance_info_summary_dict] = useState({});
     const [profile_data, setProfile_data] = useState({});
     const [news, setNews] = useState({});
+    const [ratings, setRatings] = useState({});
 
 
     availableKeywords = getAvailableKeywords(props.companies);
@@ -22,6 +23,8 @@ export function Result(props) {
       let API_Call = `/finance_summary/${props.company}`;
       let API_Call_2 = `/profile_data/${props.company}`;
       let API_Call_3 = `/news/${props.company}`;
+      let API_Call_4 = `/ratings/${props.company}`;
+
 
       fetch(API_Call)
           .then(
@@ -59,6 +62,19 @@ export function Result(props) {
               function(data) {
                   console.log(data["news"]);
                   setNews(data["news"]);
+              }
+          )
+
+          fetch(API_Call_4)
+          .then(
+              function(response) {
+                  return response.json();
+              }
+          )
+          .then(
+              function(data) {
+                  console.log(data["ratings"]);
+                  setRatings(data["ratings"]);
               }
           )
     }, [props.company])
@@ -209,7 +225,7 @@ export function Result(props) {
     function nextSearchPhrase(e) {
       if (e.key === "ArrowDown") {
         e.preventDefault();
-        const liArray = document.getElementsByTagName('li');
+        const liArray = document.getElementsByClassName('myListItem2');
         if (show && liArray.length) {
           if (temp === -1) {
             curText = document.getElementById("input-box2").value;
@@ -232,7 +248,7 @@ export function Result(props) {
         }
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
-        const liArray = document.getElementsByTagName('li');
+        const liArray = document.getElementsByClassName('myListItem2');
         if (show && liArray.length) {
           if (temp === -1) {
             curText = document.getElementById("input-box2").value;
@@ -288,7 +304,7 @@ export function Result(props) {
             </div>
         </div>
         <div className="middle">
-          <Actualtabs company = {props.company} finance_info_summary_dict={finance_info_summary_dict} profile_data={profile_data} news={news}></Actualtabs>
+          <Actualtabs company = {props.company} finance_info_summary_dict={finance_info_summary_dict} profile_data={profile_data} news={news} ratings={ratings}></Actualtabs>
         </div>
       </div>
     );

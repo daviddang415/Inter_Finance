@@ -79,9 +79,13 @@ export function Home(props) {
     let result = [];
     
     if (inputText) {
+      if (inputText === 'amex') {
+        result = ['American Express (AXP)'];
+      } else {
       result = availableKeywords.filter((keyword)=>{
         return keyword.toLowerCase().includes(inputText.toLowerCase());
       });
+    }
     } else {
       result = availableKeywords;
     }

@@ -1,4 +1,32 @@
-.container4 {
-    border: 1px solid black;
-    width: 50%;
+.ratingsTable{
+    /*border: 1px solid black;*/
+    /*background-color: palevioletred;*/
+    background-color: white;
+    /*margin: 0px 15px;*/
+    padding: 3px 10px 5px 10px;
+}
+
+
+.actualRatingsTable {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.tableData {
+    padding-top:1.6px;
+    padding-bottom:1.6px;
+  }
+
+td {
+    width: 180px;
+    font-size: 17px;
+}
+
+.value {
+    text-align: right;
+}
+
+.description {
+    text-align: left;
 }

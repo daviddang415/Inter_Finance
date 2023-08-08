@@ -42,5 +42,11 @@ def get_news(company):
     news = getFinanceData.getNews(company_dict[company])
     return {'news': news}
 
+@app.route('/ratings/<company>', methods=['GET'])
+def get_ratings(company):
+    company_dict = pickle.load(open("sp500tickers.pickle", "rb"))
+    ratings = getFinanceData.getRatings(company_dict[company])
+    return {'ratings': ratings}
+
 if __name__ == "__main__":
     app.run(debug=True)
