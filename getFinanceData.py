@@ -217,7 +217,7 @@ def getNews(ticker):
         temp["Publisher"] = news['publisher']
         temp['Link'] = news['link']
         temp['Publisher Date'] = str(datetime.datetime.fromtimestamp(news['providerPublishTime']))[:-3]
-        if 'thumbnail' in news:
+        if 'thumbnail' in news and len(news['thumbnail']['resolutions']) > 1:
             temp['Thumbnail'] = news['thumbnail']['resolutions'][1]['url']
         else:
             temp['Thumbnail'] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png'

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './ProfileTable.css';
 
 export function ProfileTable(props) {
