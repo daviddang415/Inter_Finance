@@ -37,8 +37,8 @@ npm start
 ## Built With
 
 ### Backend
-* [yfinance](https://developer.spotify.com/documentation/web-api) - Obtain real-time stock prices, profiling, and news
-* [financialmodelingprep](https://site.financialmodelingprep.com/developer/docs#valuation) - Determine the ratings of a company according to its financial statements
+* [yfinance API](https://developer.spotify.com/documentation/web-api) - Obtain real-time stock prices, profiling, and news
+* [financialmodelingprep API](https://site.financialmodelingprep.com/developer/docs#valuation) - Determine the ratings of a company according to its financial statements
 * [Flask](https://flask.palletsprojects.com/en/3.0.x/) - Python web framework
 
 ### Frontend
